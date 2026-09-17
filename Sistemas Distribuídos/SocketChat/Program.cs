@@ -54,19 +54,6 @@ while (true)
         continue;
     }
 
-    if (line.Equals("/spam", StringComparison.OrdinalIgnoreCase))
-    {
-        Console.WriteLine("Teste");
-        var payloadPesado = new string('X', 50000);
-        
-        for (int i = 0; i < 150; i++)
-        {
-            nodeManager.Broadcast($"Spam {i} {payloadPesado}");
-            await Task.Delay(20);
-        }
-        continue;
-    }
-
     nodeManager.Broadcast(line);
 }
 
