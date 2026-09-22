@@ -53,11 +53,9 @@ def checkObj(sala):
         return 1
     return 0
 
-def funcaoMapear(x, y, totalColunas):
-    limiteDireita = totalColunas - 2
-
+def funcaoMapear(x, y):
     if x % 2 != 0:
-        if y < limiteDireita:
+        if y < 4:
             return 'direita'
         return 'abaixo'
     else:
@@ -66,10 +64,10 @@ def funcaoMapear(x, y, totalColunas):
         return 'abaixo'
 
 def agenteReativoSimples(percepcao):
-    x, y, status, totalColunas = percepcao
+    x, y, status = percepcao
     if status == 2:
         return 'aspirar'
-    return funcaoMapear(x, y, totalColunas)
+    return funcaoMapear(x, y)
 
 def agenteObjetivo(percepcao, objObtido):
     if objObtido == 0:
@@ -93,7 +91,7 @@ def executarSimulacao():
         time.sleep(0.3)
         
         statusAtual = ambiente.obterStatus(agente_x, agente_y)
-        percepcao = (agente_x, agente_y, statusAtual, ambiente.colunas)
+        percepcao = (agente_x, agente_y, statusAtual)
         
         if escolha == '1':
             acao = agenteReativoSimples(percepcao)
